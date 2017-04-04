@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"hashids",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "hashids",
+    "description": "api documentation for [hashids (v1.1.1)](http://hashids.org/javascript) [![npm package](https://img.shields.io/npm/v/npmdoc-hashids.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-hashids) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-hashids.svg)](https://travis-ci.org/npmdoc/node-npmdoc-hashids)",
     "devDependencies": {
-        "hashids": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "hashids": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-hashids",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-hashids",
+    "keywords": [
+        "documentation",
+        "hashids"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_hashids.js",
+    "name": "npmdoc-hashids",
+    "nameAlias": "npmdoc_hashids",
+    "nameOriginal": "npmdoc-hashids",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-hashids"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
