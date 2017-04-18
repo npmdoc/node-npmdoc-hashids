@@ -1,9 +1,14 @@
-# api documentation for  [hashids (v1.1.1)](http://hashids.org/javascript)  [![npm package](https://img.shields.io/npm/v/npmdoc-hashids.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-hashids) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-hashids.svg)](https://travis-ci.org/npmdoc/node-npmdoc-hashids)
+# npmdoc-hashids
+
+#### api documentation for  [hashids (v1.1.1)](http://hashids.org/javascript)  [![npm package](https://img.shields.io/npm/v/npmdoc-hashids.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-hashids) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-hashids.svg)](https://travis-ci.org/npmdoc/node-npmdoc-hashids)
+
 #### Generate YouTube-like ids from numbers. Use Hashids when you do not want to expose your database ids to the user.
 
-[![NPM](https://nodei.co/npm/hashids.png?downloads=true)](https://www.npmjs.com/package/hashids)
+[![NPM](https://nodei.co/npm/hashids.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/hashids)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-hashids/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-hashids_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-hashids/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-hashids/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-hashids/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-hashids/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-hashids/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-hashids/build/screenCapture.npmPackageListing.svg)
 
@@ -18,7 +23,6 @@
 {
     "author": {
         "name": "Ivan Akimov",
-        "email": "ivan@barreleye.com",
         "url": "https://twitter.com/IvanAkimov"
     },
     "bugs": {
@@ -63,13 +67,11 @@
     "main": "dist/hashids.js",
     "maintainers": [
         {
-            "name": "ivan",
-            "email": "ivan@grather.com"
+            "name": "ivan"
         }
     ],
     "name": "hashids",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ivanakimov/hashids.js.git"
@@ -88,16 +90,6 @@
     "version": "1.1.1"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module hashids](#apidoc.module.hashids)
-
-
-
-# <a name="apidoc.module.hashids"></a>[module hashids](#apidoc.module.hashids)
 
 
 
