@@ -61,12 +61,186 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.hashids">module hashids</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hashids.hashids">
+            function <span class="apidocSignatureSpan"></span>hashids
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hashids.toString">
+            function <span class="apidocSignatureSpan">hashids.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.hashids.toString">module hashids.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hashids.toString.toString">
+            function <span class="apidocSignatureSpan">hashids.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.hashids" id="apidoc.module.hashids">module hashids</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.hashids.hashids" id="apidoc.element.hashids.hashids">
+        function <span class="apidocSignatureSpan"></span>hashids
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Hashids() {
+			var salt = arguments.length &#x3c;= 0 || arguments[0] === undefined ? &#x27;&#x27; : arguments[0];
+			var minLength = arguments.length &#x3c;= 1 || arguments[1] === undefined ? 0 : arguments[1];
+			var alphabet = arguments.length &#x3c;= 2 || arguments[2] === undefined ? &#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+&#x27; : arguments[2];
+
+			_classCallCheck(this, Hashids);
+
+			var minAlphabetLength = 16;
+			var sepDiv = 3.5;
+			var guardDiv = 12;
+
+			var errorAlphabetLength = &#x27;error: alphabet must contain at least X unique characters&#x27;;
+			var errorAlphabetSpace = &#x27;error: alphabet cannot contain spaces&#x27;;
+
+			var uniqueAlphabet = &#x27;&#x27;,
+			    sepsLength = void 0,
+			    diff = void 0;
+
+			<span class="apidocCodeCommentSpan">/* funcs */
+</span>
+			this.escapeRegExp = function (s) {
+				return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, &#x27;\\$&#x26;&#x27;);
+			};
+			this.parseInt = function (v, radix) {
+				return (/^(\-|\+)?([0-9]+|Infinity)$/.test(v) ? parseInt(v, radix) : NaN
+				);
+			};
+
+			/* alphabet vars */
+
+			this.seps = &#x27;cfhistuCFHISTU&#x27;;
+			this.minLength = parseInt(minLength, 10) &#x3e; 0 ? minLength : 0;
+			this.salt = typeof salt === &#x27;string&#x27; ? salt : &#x27;&#x27;;
+
+			if (typeof alphabet === &#x27;string&#x27;) {
+				this.alphabet = alphabet;
+			}
+
+			for (var i = 0; i !== this.alphabet.length; i++) {
+				if (uniqueAlphabet.indexOf(this.alphabet.charAt(i)) === -1) {
+					uniqueAlphabet += this.alphabet.charAt(i);
+				}
+			}
+
+			this.alphabet = uniqueAlphabet;
+
+			if (this.alphabet.length &#x3c; minAlphabetLength) {
+				throw errorAlphabetLength.replace(&#x27;X&#x27;, minAlphabetLength);
+			}
+
+			if (this.alphabet.search(&#x27; &#x27;) !== -1) {
+				throw errorAlphabetSpace;
+			}
+
+			/*
+   	`this.seps` should contain only characters present in `this.alphabet`
+   	`this.alphabet` should not contains `this.seps`
+   */
+
+			for (var _i = 0; _i !== this.seps.length; _i++) {
+
+				var j = this.alphabet.indexOf(this.seps.charAt(_i));
+				if (j === -1) {
+					this.seps = this.seps.substr(0, _i) + &#x27; &#x27; + this.seps.substr(_i + 1);
+				} else {
+					this.alphabet = this.alphabet.substr(0, j) + &#x27; &#x27; + this.alphabet.substr(j + 1);
+				}
+			}
+
+			this.alphabet = this.alphabet.replace(/ /g, &#x27;&#x27;);
+
+			this.seps = this.seps.replace(/ /g, &#x27;&#x27;);
+			this.seps = this._shuffle(this.seps, this.salt);
+
+			if (!this.seps.length || this.alphabet.length / this.seps.length &#x3e; sepDiv) {
+
+				sepsLength = Math.ceil(this.alphabet.length / sepDiv);
+
+				if (sepsLength &#x3e; this.seps.length) {
+
+					diff = sepsLength - this.seps.length;
+					this.seps += this.alphabet.substr(0, diff);
+					this.alphabet = this.alphabet.substr(diff);
+				}
+			}
+
+			this.alphabet = this._shuffle(this.alphabet, this.salt);
+			var guardCount = Math.ceil(this.alphabet.length / guardDiv);
+
+			if (this.alphabet.length &#x3c; 3) {
+				this.guards = this.seps.substr(0, guardCount);
+				this.seps = this.seps.substr(guardCount);
+			} else {
+				this.guards = this.alphabet.substr(0, guardCount);
+				this.alphabet = this.alphabet.substr(guardCount);
+			}
+		}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hashids.toString" id="apidoc.element.hashids.toString">
+        function <span class="apidocSignatureSpan">hashids.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.hashids.toString" id="apidoc.module.hashids.toString">module hashids.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.hashids.toString.toString" id="apidoc.element.hashids.toString.toString">
+        function <span class="apidocSignatureSpan">hashids.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 
