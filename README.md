@@ -1,6 +1,6 @@
 # npmdoc-hashids
 
-#### api documentation for  [hashids (v1.1.1)](http://hashids.org/javascript)  [![npm package](https://img.shields.io/npm/v/npmdoc-hashids.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-hashids) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-hashids.svg)](https://travis-ci.org/npmdoc/node-npmdoc-hashids)
+#### basic api documentation for  [hashids (v1.1.1)](http://hashids.org/javascript)  [![npm package](https://img.shields.io/npm/v/npmdoc-hashids.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-hashids) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-hashids.svg)](https://travis-ci.org/npmdoc/node-npmdoc-hashids)
 
 #### Generate YouTube-like ids from numbers. Use Hashids when you do not want to expose your database ids to the user.
 
@@ -87,7 +87,8 @@
         "rename:global": "sed -i '' 's/global.hashids/global.Hashids/g' dist/hashids.js",
         "test": "mocha tests --compilers js:babel-core/register"
     },
-    "version": "1.1.1"
+    "version": "1.1.1",
+    "bin": {}
 }
 ```
 
